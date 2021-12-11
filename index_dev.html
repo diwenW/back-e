@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <head>
+        
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+        <script src="app_code_dev.js"></script>
+    </head>
+    <body>
+        <center>
+        <form onsubmit="return false;" id="queryForm">
+        <label for="codeQuery">Search by code:</label><br>
+        <input type="text" id="codeQuery" name="codeQuery" value=""><br>
+        <input id="queryByCode" type="button" onclick="updateView(this)" value="Query" data-querytype="by_course_code">
+        <hr>
+        <label for="titleQuery">Search by title:</label><br>
+        <input type="text" id="titleQuery" name="titleQuery" value=""><br>
+        <input id="queryByTitle" type="button" onclick="updateView(this)" value="Query" data-querytype="by_title">
+        <hr>
+        <label for="nameQuery">Search by instructor's name:</label><br>
+        <input type="text" id="nameQuery" name="nameQuery" value=""><br>
+        <input id="queryByName" type="button" onclick="updateView(this)" value="Query" data-querytype="by_instructor">
+        <hr>
+        
+        <label for="levelQuery">Search by level:</label><br>
+        <input type="text" id="levelQuery" name="levelQuery" value=""><br>
+        <input id="queryByLevel" type="button" onclick="updateView(this)" value="Query" data-querytype="by_level">
+        
+        <hr>
+        <label for="cQuery">Search by:</label><br>
+        Name:<input type="text" id="nameQuery" name="nameQuery" value=""><br>
+        Level:<input type="text" id="levelQuery" name="levelQuery" value=""><br>
+        <input id="queryByC" type="button" onclick="updateView(this)" value="Query" data-querytype="combined_query">
+        
+
+        </form>
+        <div id="results">
+        </div>
+        </center>
+    </body>
+</html>
+
+<script id="show_results_view" type="text/x-handlebars-template">
+    <ul>
+        {{#each Courses}}
+        <li>id: {{this.id}} | code: {{this.course_code}} | level: {{this.course_level}} | title: {{this.title}} | instructor: {{this.instructor}}</li>
+        {{/each}}
+    </ul>
+</script>
